@@ -66,14 +66,13 @@ main(List<String> arguments) {
   }
 
   Point point = new Point(1, 2, 3);
-  point.x=3;
+  point.x = 3;
   print(point);
-  Rectangle rec=new Rectangle(0, 0, 100, 200);
+  Rectangle rec = new Rectangle(0, 0, 100, 200);
   print(rec.right);
-  
-  var logger=new Logger('UI');
-  logger.log('Button clicked');
 
+  var logger = new Logger('UI');
+  logger.log('Button clicked');
 }
 
 class Person {

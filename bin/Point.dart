@@ -1,3 +1,4 @@
+library shape;
 class Point {
   num x;
   num y;
