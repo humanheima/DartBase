@@ -4,10 +4,49 @@ import 'dart:async';
  */
 
 void main(List<String> arguments) {
-  useWait();
+  //useWait();
+  //futureThen();
+  //featureCatchError();
+  //futureWait();
+  useStream();
 }
 
-useFuture() {}
+void futureThen() {
+  Future.delayed(new Duration(seconds: 2), () {
+    return "hello world";
+  }).then((data) {
+    print(data);
+  }, onError: (e) {
+    print(e);
+  });
+}
+
+futureCatchError() {
+  Future.delayed(new Duration(seconds: 2), () {
+    throw new AssertionError("Error");
+  }).then((data) {
+    print(data);
+  }).catchError((e) {
+    print(e);
+  }).whenComplete(() {
+    print("complere");
+  });
+}
+
+futureWait() {
+  Future.wait([
+    Future.delayed(new Duration(seconds: 2), () {
+      return "hello";
+    }),
+    Future.delayed(new Duration(seconds: 2), () {
+      return " world";
+    })
+  ]).then((results) {
+    print(results[0] + results[1]);
+  }).catchError((e) {
+    print(e);
+  });
+}
 
 useWait() async {
   try {
@@ -28,4 +67,24 @@ String getValueFromNetwork() {
   }
   print('return value');
   return result.toString();
+}
+
+useStream() {
+  Stream.fromFutures([
+    Future.delayed(new Duration(seconds: 1), () {
+      return "hello 1";
+    }),
+    Future.delayed(new Duration(seconds: 1), () {
+      throw AssertionError("error");
+    }),
+    Future.delayed(new Duration(seconds: 1), () {
+      return "hello 3";
+    })
+  ]).listen((data) {
+    print(data);
+  }, onError: (e) {
+    print(e);
+  }, onDone: () {
+    print("done");
+  });
 }
