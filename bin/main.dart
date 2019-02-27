@@ -3,7 +3,6 @@ import 'Point.dart';
 
 main(List<String> arguments) {
   print('Hello world: ${DartBase.calculate()}!');
-
   var str1 = "OK?";
   String str2 = "It's ok";
   var str3 = """Dart Lang
@@ -66,10 +65,13 @@ main(List<String> arguments) {
   }
 
   Point point = new Point(1, 2, 3);
+
   point.x = 3;
   print(point);
   Rectangle rec = new Rectangle(0, 0, 100, 200);
   print(rec.right);
+
+  point = point + new Point(3, 4, 5);
 
   var logger = new Logger('UI');
   logger.log('Button clicked');

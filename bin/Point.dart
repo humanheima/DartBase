@@ -1,4 +1,7 @@
 library shape;
+
+import 'dart:math';
+
 class Point {
   num x;
   num y;
@@ -15,9 +18,17 @@ class Point {
     print('i am from list');
   }
 
+  operator +(p) => new Point(x + p.x, y + p.y, z + p.z);
+
   @override
   String toString() {
     return 'Point{x: $x, y: $y, z: $z}';
+  }
+
+  static distance(p1, p2) {
+    var dx = p1.x - p2.x;
+    var dy = p1.y - p2.y;
+    return sqrt(dx * dx + dy * dy);
   }
 }
 
@@ -93,5 +104,4 @@ abstract class Person {
 class Student implements Person {
   @override
   String greet(who) => "I am a android developer";
-
 }
