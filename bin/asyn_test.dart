@@ -6,9 +6,9 @@ import 'dart:async';
 void main(List<String> arguments) {
   //useWait();
   //futureThen();
-  //featureCatchError();
+  futureCatchError();
   //futureWait();
-  useStream();
+  //useStream();
 }
 
 void futureThen() {
